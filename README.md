@@ -2,20 +2,20 @@
 
  presented by [Christian Bernecker](https://www.linkedin.com/in/bernecker-christian-ba5ab4170/)
 
-[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud%20Foundary.png]
+![Cloud Foundary](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud%20Foundary.png)
 
 This is a short demo of how can you synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps. When you use multiple instances in a IBM Cloud Foundary App (CF) and you use lists, arrays or objects to cache information in the memory you have to be careful with the refreshment of the cache. Because if you use an API Call to refresh the cache. Only the instances that the request hit will be updated. All others stayed in the same condition as before. That means each instance has indepentend memory and they are not synchronized. Unfortunately there is no standard process designed in CF or IBM Cloud. Of course you can take a restart of your application. But if you have an application with a high availability this is not recommended.
 
 # The Problem
 
 ### Initiated Cache after restart (synched)
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Iniated%20Cache.png|alt=App%20with%20loaded%20Cache]]
+![Iniate the cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Iniated%20Cache.png)
 
 ### API Call to one of the instances 
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Updating%20Cache.png|alt=App%20with%20loaded%20Cache]]
+![Update Cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Updating%20Cache.png)
 
 ## Update the cache only on one Instacne (out of snych)
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/NotSynced.png|alt=Not%20Synched%20Instances]]
+![Not Synched](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/NotSynced.png)
 
 
 # The Solution
@@ -73,7 +73,7 @@ while instance:
 
 these command push an app called Python-Refresh-Cache-Multiple-Instances to your IBM Cloud Account that has 3 Instances running with 128MB. It looks like:
 
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Push.png|alt=Push]]
+![Push](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Push.png)
 
 3. Note the url
 4. You can use the following API Calls:
