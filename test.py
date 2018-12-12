@@ -14,11 +14,13 @@ port = int(os.getenv('PORT', 8000))
 
 @app.route('/api/v1/current', methods=['POST','GET'])
 def current():
+    # Shows the current object in the cache of the instance that it hits
     return jsonify({"Instance": CF_INSTANCE_INDEX,
                     "Cache Object" : cache_file})
 
 @app.route('/api/v1/update', methods=['POST','GET'])
 def update():
+    # Update the current object in the cache of the instance that it hits
     cache_file['MY_CACHE3'] = request.json['MY_CACHE']
     return jsonify({"Instance": CF_INSTANCE_INDEX,
                     "Cache Object" : cache_file})
@@ -33,6 +35,7 @@ def refresh_all():
 
 @app.route('/api/v1/refresh', methods=['POST','GET'])
 def refresh():
+    # Update the current object in all instance that it hits
     print(str(request.json))
     instance = 0
     HTTP_STATUS = 200

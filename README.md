@@ -1,21 +1,21 @@
-# Synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary .
+# Synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps.
 
  presented by [Christian Bernecker](https://www.linkedin.com/in/bernecker-christian-ba5ab4170/)
 
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud%20Foundary.png|alt=Cloud%20Foundary]]
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Cloud%20Foundary.png|alt=Cloud%20Foundary]]
 
 This is a short demo of how can you synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps. When you use multiple instances in a IBM Cloud Foundary App (CF) and you use lists, arrays or objects to cache information in the memory you have to be careful with the refreshment of the cache. Because if you use an API Call to refresh the cache. Only the instances that the request hit will be updated. All others stayed in the same condition as before. That means each instance has indepentend memory and they are not synchronized. Unfortunately there is no standard process designed in CF or IBM Cloud. Of course you can take a restart of your application. But if you have an application with a high availability this is not recommended.
 
 # The Problem
 
 ### Initiated Cache after restart (synched)
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Iniated%20Cache.png|alt=App%20with%20loaded%20Cache]]
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Iniated%20Cache.png|alt=App%20with%20loaded%20Cache]]
 
 ### API Call to one of the instances 
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Updating%20Cache.png|alt=App%20with%20loaded%20Cache]]
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Updating%20Cache.png|alt=App%20with%20loaded%20Cache]]
 
 ## Update the cache only on one Instacne (out of snych)
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/NotSynced.png|alt=Not%20Synched%20Instances]]
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/NotSynced.png|alt=Not%20Synched%20Instances]]
 
 
 # The Solution
@@ -65,5 +65,57 @@ while instance:
 * [Python](https://www.python.org/downloads/) - Version 3.6
 
 ## START
+
+1. Clone the Repo or Download the Code
+2. Create an CF instance on your IBM Cloud Account. You can do that very easily with the following command: 
+
+> cf push 
+
+these command push an app called Python-Refresh-Cache-Multiple-Instances to your IBM Cloud Account that has 3 Instances running with 128MB. It looks like:
+
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Push.png|alt=Push]]
+
+3. Note the url
+4. You can use the following API Calls:
+
+|URL                         | Description                                                      |      |
+|----------------------------|------------------------------------------------------------------|------|
+| http://url/api/v1/current  | Shows the current cached Object and the instance that is called  | POST |
+| http://url/api/v1/update   | You can update the cahced object on the instance this is hitted  | POST |
+| http://url/api/v1/refresh  | With refresh you can uptade the object over all instances        | POST |
+
+5. If you call http://url/api/v1/update with the body 
+
+```JSON 
+{
+    "MY_CACHE": "NEW_OBJECT2"
+}
+```
+
+you will receive
+```JSON 
+{
+    "Cache Object": {
+        "MY_CACHE1": "OBJECT1",
+        "MY_CACHE2": "OBJECT2",
+        "MY_CACHE3": "NEW_OBJECT2"
+    },
+    "Instance": "0"
+}
+```
+
+6. Now call http://url/api/v1/current many times and check what is in the cache of instance one and two.
+7. If you call http://url/api/v1/refresh with the body 
+
+```JSON 
+{
+    "MY_CACHE": "NEW_OBJECT2"
+}
+```
+8. Go to step 6 and check if all instances are updated 
+
+
+PERFEKT YOU GOT IT. Go now to the code and check how it works!!!!
+
 
 
