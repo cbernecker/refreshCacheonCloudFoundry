@@ -2,7 +2,7 @@
 
  presented by [Christian Bernecker](https://www.linkedin.com/in/bernecker-christian-ba5ab4170/)
 
-[[https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Cloud%20Foundary.png|alt=Cloud%20Foundary]]
+[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud%20Foundary.png]
 
 This is a short demo of how can you synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps. When you use multiple instances in a IBM Cloud Foundary App (CF) and you use lists, arrays or objects to cache information in the memory you have to be careful with the refreshment of the cache. Because if you use an API Call to refresh the cache. Only the instances that the request hit will be updated. All others stayed in the same condition as before. That means each instance has indepentend memory and they are not synchronized. Unfortunately there is no standard process designed in CF or IBM Cloud. Of course you can take a restart of your application. But if you have an application with a high availability this is not recommended.
 
