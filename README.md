@@ -36,8 +36,8 @@ The idea is to let the instance that is hitted call all other exisiting instance
 ### PSEUDO-CODE:
 
 ```Python
-guid = os.gentenv(CF_INSTANCE_GUID)[application_id]
-url = "https://" + os.gentenv(CF_INSTANCE_GUID)['application_uris'][0] + "/api/v1/refresh"
+guid = os.gentenv(VCAP_APPLICATION)['application_id']
+url = "https://" + os.gentenv(VCAP_APPLICATION)['application_uris'][0] + "/api/v1/refresh"
 
 instance = 0
 another_instance = True
