@@ -2,9 +2,23 @@
 
  presented by [Christian Bernecker](https://www.linkedin.com/in/bernecker-christian-ba5ab4170/)
 
- [[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud Foundary.png|alt=Cloud Foundary]]
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Cloud%20Foundary.png|alt=Cloud%20Foundary]]
 
-This is a short demo of how can you synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps. When you use multiple instances in a IBM Cloud Foundary App (CF) and you use lists, arrays or objects to cache information in the memory you have to be careful with the refreshment of the cache. Because if you use an API Call to refresh the cache. Only the instances that the request hit will be updated. All others stayed in the same condition as before. Unfortunately there is no standard process designed in CF or IBM Cloud. Of course you can take a restart of your application. But if you have an application with a high availability this is not recommended.
+This is a short demo of how can you synchronize in-memory objects over multiple instances in IBM CLOUD Cloud Foundary Apps. When you use multiple instances in a IBM Cloud Foundary App (CF) and you use lists, arrays or objects to cache information in the memory you have to be careful with the refreshment of the cache. Because if you use an API Call to refresh the cache. Only the instances that the request hit will be updated. All others stayed in the same condition as before. That means each instance has indepentend memory and they are not synchronized. Unfortunately there is no standard process designed in CF or IBM Cloud. Of course you can take a restart of your application. But if you have an application with a high availability this is not recommended.
+
+# The Problem
+
+### Initiated Cache after restart (synched)
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Iniated%20Cache.png|alt=App%20with%20loaded%20Cache]]
+
+### API Call to one of the instances 
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Updating%20Cache.png|alt=App%20with%20loaded%20Cache]]
+
+## Update the cache only on one Instacne (out of snych)
+[[https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/NotSynced.png|alt=Not%20Synched%20Instances]]
+
+
+# The Solution
 
 There is a simple way to refresh the cache from the code side. You can access the following environment variables that contain the right information:
 
@@ -19,7 +33,7 @@ see: https://docs.cloudfoundry.org/concepts/http-routing.html#app-instance-routi
 
 The idea is to let the instance that is hitted call all other exisiting instances. 
 
-PSEUDO-CODE:
+### PSEUDO-CODE:
 
 ```Python
 guid = os.gentenv(CF_INSTANCE_GUID)[application_id]
