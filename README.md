@@ -15,7 +15,7 @@ This is a short demo of how can you synchronize in-memory objects over multiple 
 ![Update Cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Updating%20Cache.PNG)
 
 ## Update the cache only on one Instacne (out of snych)
-![Not Synched](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/NotSynced.PNG)
+![Not Synched](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/NotSynched.PNG)
 
 
 # The Solution
