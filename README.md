@@ -9,13 +9,13 @@ This is a short demo of how can you synchronize in-memory objects over multiple 
 # The Problem
 
 ### Initiated Cache after restart (synched)
-![Iniate the cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Iniated%20Cache.png)
+![Iniate the cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Iniated%20Cache.png)
 
 ### API Call to one of the instances 
-![Update Cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Updating%20Cache.png)
+![Update Cache](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Updating%20Cache.png)
 
 ## Update the cache only on one Instacne (out of snych)
-![Not Synched](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/NotSynced.png)
+![Not Synched](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/NotSynced.png)
 
 
 # The Solution
@@ -73,7 +73,7 @@ while instance:
 
 these command push an app called Python-Refresh-Cache-Multiple-Instances to your IBM Cloud Account that has 3 Instances running with 128MB. It looks like:
 
-![Push](https://github.com/cbernecker/refreshCacheonCloudFoundary/tree/master/img/Push.png)
+![Push](https://github.com/cbernecker/refreshCacheonCloudFoundary/blob/master/img/Push.png)
 
 3. Note the url
 4. You can use the following API Calls:
